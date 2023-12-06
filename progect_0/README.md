@@ -1,9 +1,20 @@
 # Проект 0. Угадай число
 
 ## Оглавление
-[1. Описание проекта](https://github.com/arahni/sf_data_saince/tree/main/progect_0.README.md#Описание-проекта)
+[1. Описание проекта](https://github.com/arahni/sf_data_science/tree/main/progect_0.README.md#Описание-проекта)
+[2. Какой кейс решаем?](https://github.com/arahni/sf_data_science/tree/main/progect_0.README.md#Какой-кейс-решаем)
 
 ### Описание проекта
 Угадать загаданное компьютером число за минимальное число попыток.
 
-:arrow_up: [к оглавлению](https://github.com/arahni/sf_data_saince/tree/main/progect_0.README.md#Оглавление)
+:arrow_up:[к оглавлению](https://github.com/arahni/sf_data_science/tree/main/progect_0.README.md#Оглавление)
+
+### Какой кейс решаем?
+Нужно написать программу, которая угадает число за минимальное число попыток
+
+**Условия соревнования**
+- Компьютер загадывает число от 0 до 100, и нам его нужно угадать. Под "Угадать", подразумевается "написать программу, которая угадывает число".
+- Алгоритм учитывает информацию о том, больше ли случайное число или меньше нужного нам
+
+
+https://github.com/SkilfactoryDS/sf_data_science/tree/main/progect_0
