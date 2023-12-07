@@ -1,18 +1,65 @@
+"""Игра угадай число
+Компьютер сам загадывает и сам угадывает число
+"""
+
 import numpy as np
 
-number = np.random.randint(1, 101) # загадаем число
-count = 0
+def random_predict(number:int=1) -> int:
+    """Рандомно угадываем число
 
-while True:
-    count += 1
-    predict_number = int(input("Угадай число от 1 до 100 "))
+    Args:
+        number (int, optional): Загаданное число. Defaults to 1.
 
-    if predict_number > number:
-        print("Число должно быть меньше!")
+    Returns:
+        int: Число попыток
+    """
+    count = 0
+    min_int = 1 # минимальное угадыаемое число
+    max_int = 100 # максимальное угадываемое число
 
-    elif predict_number < number:
-        print("Число должно быть больше!")
+    while True:
+        count += 1
+        predict_number = (min_int + max_int) // 2 # предполагаемое число
 
-    else:
-        print(f"Вы угадали число! Это число = {number}, за {count} попыток")
-        break # конец игры, выход из цикла
+        if(predict_number < number): 
+            min_int = predict_number + 1 # увеличиваем минимальное 
+
+        elif(predict_number > number):
+            max_int = predict_number - 1 # уменьшаем максимальное
+
+        else:
+            break  # выход из цикла если угадали
+    return count
+
+
+def score_game(random_predict, switch_seed=True) -> int:
+    """_summary_
+
+    Args:
+        random_predict (_type_): функция угадывания
+        switch_seed (bool, optional): Включение воспроизводимости случайных чисел. По умолчанию True.
+
+    Returns:
+        int: среднее количество попыток
+    """
+    count_ls = []
+
+    if switch_seed:
+        np.random.seed(1)  # фиксируем сид для воспроизводимости
+
+    random_array = np.random.randint(1, 101, size=(1000))  # загадали список чисел
+
+    for number in random_array:
+        count_ls.append(random_predict(number))
+        
+    score = int(np.mean(count_ls))
+    print(f"Ваш алгоритм угадывает число в среднем за:{score} попыток")
+    return score
+
+
+if __name__ == "__main__":
+    print("seed выключен")
+    score_game(random_predict, False)
+    print("seed включен")
+    score_game(random_predict)
+    
